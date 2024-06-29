@@ -1,0 +1,28 @@
+name: 'Send Notification to Telegram'
+description: 'Send notification events to Telegram messenger'
+author: 'chapvic'
+inputs:
+  chat:
+    description: 'Chat to send: chat_id, channel_id or @channel_name'
+    required: true
+  token:
+    description: 'Telegram Bot Token'
+    required: true
+  status:
+    description: 'Job status'
+    required: true
+  title:
+    description: 'Message title'
+    required: false
+  message:
+    description: 'Notification message'
+    required: false
+  footer:
+    description: 'Message footer'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'send'
+  color: 'blue'

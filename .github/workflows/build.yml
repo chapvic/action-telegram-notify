@@ -1,0 +1,27 @@
+name: Build Action
+on: [push]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: 1.21
+
+    - name: Build
+      run: go build -v .
+
+    - name: Send notification
+      uses: chapvic/telegram-notify@master
+      if: always()
+      with:
+        chat: ${{ secrets.TELEGRAM_CHAT_ID }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        status: ${{ job.status }}
