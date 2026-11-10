@@ -30,7 +30,7 @@ jobs:
     - name: Lint
       uses: golangci/golangci-lint-action@v6
       with:
-        version: latest
+        version: v1.65.0   # ← явно фиксируем версию, собранную на Go 1.26
 
     - name: Vulnerability check
       run: |
