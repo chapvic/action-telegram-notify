@@ -1,4 +1,4 @@
-FROM golang:1.22 AS builder
+FROM golang:1.26 AS builder
 WORKDIR /app
 
 # Cache dependencies separately from sources
@@ -26,5 +26,4 @@ RUN apk add --no-cache ca-certificates
 COPY --from=builder /app/telegram-notify /telegram-notify
 
 # NOTE: root is required so the action can write to GITHUB_OUTPUT.
-# GitHub Actions docker-actions are isolated by the runner anyway.
 ENTRYPOINT ["/telegram-notify"]

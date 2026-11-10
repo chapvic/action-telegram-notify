@@ -1,6 +1,6 @@
 module github.com/chapvic/telegram-notify
 
-go 1.22
+go 1.26
 
 require (
 	github.com/JohannesKaufmann/html-to-markdown v1.6.0
