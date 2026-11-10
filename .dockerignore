@@ -1,0 +1,24 @@
+# Git
+.git
+.github
+
+# Documentation
+*.md
+LICENSE
+
+# Build artifacts
+telegram-notify
+telegram-notify.exe
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+
+# IDE / OS
+.vscode
+.idea
+.DS_Store
+
+# Action / workflow descriptors
+action.yml
+build.yml
