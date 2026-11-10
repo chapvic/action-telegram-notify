@@ -16,15 +16,15 @@ RUN CGO_ENABLED=0 go build \
 
 FROM alpine:3.20
 
-LABEL org.opencontainers.image.source="https://github.com/chapvic/telegram-notify" \
+LABEL org.opencontainers.image.source="https://github.com/chapvic/action-telegram-notify" \
       org.opencontainers.image.description="Send notification to Telegram" \
       org.opencontainers.image.licenses="MIT"
 
 # CA certificates are REQUIRED for HTTPS to api.telegram.org
-RUN apk add --no-cache ca-certificates && \
-    adduser -D -u 10001 appuser
+RUN apk add --no-cache ca-certificates
 
 COPY --from=builder /app/telegram-notify /telegram-notify
 
-USER appuser
+# NOTE: root is required so the action can write to GITHUB_OUTPUT.
+# GitHub Actions docker-actions are isolated by the runner anyway.
 ENTRYPOINT ["/telegram-notify"]
